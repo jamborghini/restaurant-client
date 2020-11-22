@@ -1,0 +1,69 @@
+:host {
+
+  .parent {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+    $border: 1px solid #E6E6E6;
+    border-top: $border;
+    border-bottom: $border;
+  }
+
+  .filler {
+    flex: .5;
+  }
+
+  h1{
+    font: 300 34px Yantramanav, sans-serif;
+    line-height: 64px;
+    letter-spacing: 0.964286px;
+    color: #333333;
+    margin: 1em;
+  }
+
+  label {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #606060;
+  }
+
+  button {
+    padding: 10px 25px 10px 25px;
+    margin-right: 6em;
+    background-color: transparent;
+    border-color: #002B56;
+    color: #002B56;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 5px;
+    border-width: 2px;
+    transition: all 0.25s;
+  }
+
+  button:hover {
+    transform: translateY(-20px);
+    cursor: pointer;
+  }
+
+
+  app-header {
+    margin: 36px;
+    max-width: 730px;
+    display: block;
+  }
+
+  @mixin filter-font {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #002B56;
+    border-bottom: #C8C8C8 1px solid;
+    padding-bottom: 8px;
+  }
+
+  .filter {
+    @include filter-font;
+  }
+
+  mat-radio-button {
+    @include filter-font;
+  }
+}

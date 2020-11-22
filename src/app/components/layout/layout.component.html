@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="parent">
+  <div>
+    <label>
+      Filter by:
+    </label>
+  </div>
+  <div>
+    <div (click)="toggleOpen()">
+      <mat-radio-button #isOpen (change)="toggleOpen()" color="primary">Open Now</mat-radio-button>
+    </div>
+  </div>
+  <div>
+    <div class="filter" [mat-menu-trigger-for]="pMenu">Price <span class="spacer"></span>
+      <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.75 0L7.5455 0.795495L3.77275 4.56824L0 0.795495L0.795495 0L3.77275 2.97725L6.75 0Z"
+              fill="#969696"/>
+      </svg>
+    </div>
+    <mat-menu #pMenu="matMenu">
+      <ng-container *ngFor="let price of prices  let i = index">
+        <mat-checkbox (change)="checked = i" [checked]="checked === i" class="mat-menu-item" color="primary">
+          {{price}}$ {{prices[checked]}}
+        </mat-checkbox>
+      </ng-container>
+    </mat-menu>
+  </div>
+  <div>
+    <div class="filter" [mat-menu-trigger-for]="cMenu">Categories <span class="spacer"></span>
+      <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.75 0L7.5455 0.795495L3.77275 4.56824L0 0.795495L0.795495 0L3.77275 2.97725L6.75 0Z"
+              fill="#969696"/>
+      </svg>
+    </div>
+    <mat-menu #cMenu="matMenu">
+      <ng-container *ngFor="let categorie of categories  let i = index">
+        <mat-checkbox (change)="checked = i" [checked]="checked === i" class="mat-menu-item" color="primary">
+          {{categorie}}
+        </mat-checkbox>
+      </ng-container>
+    </mat-menu>
+  </div>
+  <div class="filler"></div>
+  <div>
+    <button class="btn">CLEAR ALL</button>
+  </div>
+</div>
+<h1>
+  All Restaurants
+</h1>
