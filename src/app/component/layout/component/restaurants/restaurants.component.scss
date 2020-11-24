@@ -39,7 +39,7 @@
   h1 {
     font: 300 34px Yantramanav, sans-serif;
     line-height: 64px;
-    letter-spacing: 0.964286px;
+    letter-spacing: 1px;
     color: #333333;
     margin: 1em;
   }
@@ -52,13 +52,13 @@
 
   .btn {
     border: 2px solid #002B56;
-    color: white;
+    color: #002B56;
     font-family: Yantramanav, sans-serif;
     font-weight: bolder;
     letter-spacing: 5px;
     transition: all 0.25s;
     padding: 10px 25px 10px 25px;
-    background-color: #002B56;
+    background-color: transparent;
     cursor: pointer;
   }
 
@@ -69,10 +69,12 @@
 
   .btn--learn {
     width: 100%;
+    color: white;
     background-color: #002B56;
+    margin-left: .6em;
   }
 
-  .btn--more{
+  .btn--more {
     width: 420px;
     background-color: transparent;
     color: #002B56;
@@ -81,7 +83,6 @@
   }
 
   app-header {
-    margin: 36px;
     max-width: 730px;
     display: block;
   }
@@ -137,7 +138,7 @@
     @include filter-font;
   }
 
-  mat-spinner{
+  mat-spinner {
     display: block;
     margin: auto;
   }
