@@ -1,0 +1,74 @@
+<ng-container *ngIf="isLoadingB; then loadingB else fulfilledB;"></ng-container>
+<ng-template #fulfilledB>
+  <div class="restaurant-detail">
+    <div class="header">
+      <h1>{{restaurant.name}}</h1>
+      <div class="stars">
+        <app-star-rating [starCount]="restaurant.rating"></app-star-rating>
+      </div>
+      <div class="content">
+        <span>{{restaurant.categories[0].title}} &#x2022; {{restaurant.price}}</span>
+        <span class="is-open">
+          <span
+            class="dot {{restaurant.is_closed ? 'dot--red' : 'dot--green'}}">
+          </span>{{restaurant.is_closed ? 'Closed' : 'Open'}} Now
+        </span>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="media">
+      <app-map
+        [bindMessage]="restaurant.name"
+        [lat]="restaurant.coordinates.latitude"
+        [long]="restaurant.coordinates.longitude"
+      ></app-map>
+      <span *ngFor="let photo of restaurant.photos">
+    <img alt="resDetailPhoto" src="{{photo}}">
+  </span>
+    </div>
+    <div class="restaurant-name-display">{{restaurant.name}}</div>
+  </div>
+  <hr>
+  <ng-container *ngIf="isLoadingR; then loadingR else fulfilledR"></ng-container>
+  <ng-template #fulfilledR>
+    <div class="review-container" *ngFor="let review of reviewData; let i = index;">
+      <div class="reviews">
+        <div class="avatar">
+          <div>
+            <img class="img-avatar" [src]="review.user.image_url" alt="avatar">
+          </div>
+          <div class="user">
+            <div class="user-name">
+              {{review.user.name}}
+            </div>
+            <div class="time-created">
+              {{review.time_created | date: 'MM/dd/yyyy'}}
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div>
+            <app-star-rating [starCount]="review.rating"></app-star-rating>
+          </div>
+          {{review.text}}
+        </div>
+        <span></span>
+        <!--filler-->
+      </div>
+      <hr *ngIf="i + 1 !== reviewData.length">
+    </div>
+  </ng-template>
+</ng-template>
+
+<ng-template #loadingB>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+<ng-template #loadingR>
+  <mat-spinner class="review-spinner"></mat-spinner>
+</ng-template>
+
+
+
