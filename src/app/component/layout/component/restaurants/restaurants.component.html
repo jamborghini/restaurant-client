@@ -60,7 +60,12 @@
 <ng-template #fulfilled>
   <div class="grid-container">
     <mat-card *ngFor="let restaurant of restaurants" class="grid-item">
-      <img [src]="restaurant.image_url" mat-card-image alt="resImg">
+      <img [src]="restaurant.image_url" alt="resImg" mat-card-image>
+      <!--
+      Here, I'm using image_url instead photos[0] because photos[0] is already
+      equal to image_url, so I use image_url in order not to send too many HTTP
+      requests and not to exceed the daily 5000 request limit of YELP.
+      -->
       <mat-card-content>
         <mat-card-title>{{restaurant.name}}</mat-card-title>
         <div class="stars">
@@ -76,7 +81,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button class="btn btn--learn" [routerLink]="restaurant.alias">LEARN MORE</button>
+        <button [routerLink]="restaurant.alias" class="btn btn--learn">LEARN MORE</button>
       </mat-card-actions>
     </mat-card>
   </div>
