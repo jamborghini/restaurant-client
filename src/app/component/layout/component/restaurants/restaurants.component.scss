@@ -1,0 +1,158 @@
+:host {
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    @media (min-width: 1920px) {
+      grid-template-columns: repeat(6, auto);
+    }
+    padding: 2.4em;
+    text-align: center;
+  }
+
+  .grid-item {
+    font: bolder 20px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 80px;
+  }
+
+  img {
+    max-width: 300px;
+    height: 220px;
+    margin: auto;
+    object-fit: cover;
+  }
+
+  .parent {
+    display: flex;
+    justify-content: space-around;
+    padding: 2em;
+    $border: 1px solid #E6E6E6;
+    border-top: $border;
+    border-bottom: $border;
+  }
+
+  .filler {
+    flex: .5;
+  }
+
+  h1 {
+    font: 300 34px Yantramanav, sans-serif;
+    line-height: 64px;
+    letter-spacing: 0.964286px;
+    color: #333333;
+    margin: 1em;
+  }
+
+  label {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #606060;
+  }
+
+  .btn {
+    border: 2px solid #002B56;
+    color: white;
+    font-family: Yantramanav, sans-serif;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    transition: all 0.25s;
+    padding: 10px 25px 10px 25px;
+    background-color: #002B56;
+    cursor: pointer;
+  }
+
+  .btn:disabled {
+    color: #C8C8C8;
+    border-color: #C8C8C8;
+  }
+
+  .btn--learn {
+    width: 100%;
+    background-color: #002B56;
+  }
+
+  .btn--more{
+    width: 420px;
+    background-color: transparent;
+    color: #002B56;
+    display: block;
+    margin: auto auto 50px auto;
+  }
+
+  app-header {
+    margin: 36px;
+    max-width: 730px;
+    display: block;
+  }
+
+  @mixin filter-font {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #002B56;
+    border-bottom: #C8C8C8 1px solid;
+    padding-bottom: 8px;
+  }
+
+  .filter {
+    @include filter-font;
+    cursor: pointer;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .is-open {
+      font: 600 13px Yantramanav, sans-serif;
+      line-height: 16px;
+      text-align: right;
+      letter-spacing: 0.5px;
+      color: #757575;
+
+      .dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        margin-right: 4px;
+        display: inline-block;
+      }
+
+      .dot--red {
+        background-color: #00E8A4;
+      }
+
+      .dot--green {
+        background-color: #FF3548;
+      }
+    }
+  }
+
+
+  .stars {
+    text-align: left;
+  }
+
+  mat-radio-button {
+    @include filter-font;
+  }
+
+  mat-spinner{
+    display: block;
+    margin: auto;
+  }
+
+
+  mat-card {
+    max-width: 310px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+
+    mat-card-content {
+      flex: 1;
+    }
+  }
+
+
+}

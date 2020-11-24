@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="parent">
+  <div>
+    <label>
+      Filter by:
+    </label>
+  </div>
+  <div>
+    <div (click)="toggleOpen()">
+      <mat-radio-button #isOpen (change)="toggleOpen()" color="primary">Open Now</mat-radio-button>
+    </div>
+  </div>
+  <div>
+    <div [mat-menu-trigger-for]="pMenu" class="filter">Price <span class="spacer"></span>
+      <svg fill="none" height="5" viewBox="0 0 8 5" width="8" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.75 0L7.5455 0.795495L3.77275 4.56824L0 0.795495L0.795495 0L3.77275 2.97725L6.75 0Z"
+              fill="#969696"/>
+      </svg>
+    </div>
+    <mat-menu #pMenu="matMenu">
+      <ng-container *ngFor="let price of prices  let i = index">
+        <mat-checkbox
+          #priceCheckBox
+          (change)="priceCheckBox.checked ? priceChecked = i : priceChecked = null"
+          [checked]="priceChecked === i" class="mat-menu-item"
+          color="primary">
+          {{price}}
+        </mat-checkbox>
+      </ng-container>
+    </mat-menu>
+  </div>
+  <div>
+    <div [mat-menu-trigger-for]="cMenu" class="filter">Categories <span class="spacer"></span>
+      <svg fill="none" height="5" viewBox="0 0 8 5" width="8" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.75 0L7.5455 0.795495L3.77275 4.56824L0 0.795495L0.795495 0L3.77275 2.97725L6.75 0Z" fill="#969696"/>
+      </svg>
+    </div>
+    <mat-menu #cMenu="matMenu">
+      <ng-container *ngFor="let category of categories  let i = index">
+        <mat-checkbox
+          #categoryCheckBox
+          (change)="categoryCheckBox.checked ? categoryChecked = i : categoryChecked = null"
+          [checked]="categoryChecked === i" class="mat-menu-item"
+          color="primary">
+          {{category.title}}
+        </mat-checkbox>
+      </ng-container>
+    </mat-menu>
+  </div>
+  <div class="filler"></div>
+  <div>
+    <button class="btn">CLEAR ALL</button>
+  </div>
+</div>
+<h1>
+  All Restaurants
+</h1>
+<ng-container *ngIf="isLoading; then loading else fulfilled;"></ng-container>
+
+<ng-template #fulfilled>
+  <div class="grid-container">
+    <mat-card *ngFor="let restaurant of restaurants" class="grid-item">
+      <img [src]="restaurant.image_url" mat-card-image alt="resImg">
+      <mat-card-content>
+        <mat-card-title>{{restaurant.name}}</mat-card-title>
+        <div class="stars">
+          <app-star-rating [starCount]="restaurant.rating"></app-star-rating>
+        </div>
+        <div class="content">
+          <span>{{restaurant.categories[0].title}} &#x2022; {{restaurant.price}}</span>
+          <span class="is-open">
+          <span
+            class="dot {{restaurant.is_closed ? 'dot--green' : 'dot--red'}}">
+          </span>{{restaurant.is_closed ? 'CLOSED' : 'OPEN'}}
+        </span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="btn btn--learn" [routerLink]="restaurant.alias">LEARN MORE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <button class="btn btn--more">LOAD MORE</button>
+</ng-template>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
