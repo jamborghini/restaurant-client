@@ -64,7 +64,7 @@
       <!--
       Here, I'm using image_url instead photos[0] because photos[0] is already
       equal to image_url, so I use image_url in order not to send too many HTTP
-      requests and not to exceed the daily 5000 request limit of YELP.
+      requests and not to exceed the rate limit.
       -->
       <mat-card-content>
         <mat-card-title>{{restaurant.name}}</mat-card-title>
