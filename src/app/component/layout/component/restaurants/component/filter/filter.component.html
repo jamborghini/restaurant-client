@@ -1,0 +1,26 @@
+<form class="parent" [formGroup]="formGroup">
+  <div class="left">
+    <div class="filter-label">Filter by:</div>
+    <app-check-box class="filter is-open" formControlName="openNow">Open Now</app-check-box>
+
+    <app-select class="filter" formControlName="price" [displayWith]="displayPrice">
+      <span>Price</span>
+      <app-option [value]="price" *ngFor="let price of prices">
+        {{ price.label }}
+      </app-option>
+    </app-select>
+
+    <app-select class="filter" formControlName="categories" multiple [displayWith]="displayCategory">
+      <span>Categories</span>
+      <app-option [value]="category" *ngFor="let category of categories">
+        {{ category.title }}
+      </app-option>
+    </app-select>
+  </div>
+
+  <div class="right">
+    <button type="button" class="btn" [disabled]="empty" (click)="formGroup.reset()">
+      CLEAR ALL
+    </button>
+  </div>
+</form>

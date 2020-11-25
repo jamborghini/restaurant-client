@@ -1,0 +1,73 @@
+:host {
+
+  justify-content: space-between;
+
+  &, .left {
+    display: flex;
+  }
+
+  .is-open {
+    display: flex;
+  }
+
+
+  .parent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-height: 30px;
+    padding: 2em;
+    $border: 1px solid #E6E6E6;
+    border-top: $border;
+    border-bottom: $border;
+
+  }
+
+  .filter-label {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #606060;
+    margin-right: 2em;
+  }
+
+  .btn {
+    border: 2px solid #002B56;
+    color: #002B56;
+    font-family: Yantramanav, sans-serif;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    transition: all 0.25s;
+    padding: 10px 25px 10px 25px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .btn:disabled {
+    color: #C8C8C8;
+    border-color: #C8C8C8;
+    cursor: unset;
+  }
+
+  @mixin filter-font {
+    font: 600 16px Yantramanav, sans-serif;
+    letter-spacing: 1px;
+    color: #002B56;
+    border-bottom: #C8C8C8 1px solid;
+  }
+
+  .filter {
+    @include filter-font;
+    margin-right: 2em;
+    cursor: pointer;
+  }
+
+
+  app-select:last-child {
+      width: 10em;
+  }
+
+  app-select:nth-last-child(2) {
+    width: 6.2em;
+  }
+}
+
